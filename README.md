@@ -1,80 +1,134 @@
-# eCommerce Application
+# eCommerce Application Project
 
-In this project, you'll have an opportunity to demonstrate the security and DevOps skills that you learned in this lesson by completing an eCommerce application. You'll start with a template for the complete application, and your goal will be to take this template and add proper authentication and authorization controls so users can only access their data, and that data can only be accessed in a secure way. 
+This project is intended to work on the security and DevOps part of an eCommerce application that provides a REST API. As any typical eCommerce application, a user has a cart, and a cart has a number of items that will encompass an order. The order is submitted, and as a result becomes associated to the user. The application has been built using Java, Spring Boot, Maven, Hibernate ORM, and H2 as database.
 
-## Project Template
-First, you'll want to get set up with the template. The template is written in Java using Spring Boot, Hibernate ORM, and the H2 database. H2 is an in memory database, so if you need to retry something, every application startup is a fresh copy.
+## Table of Contents
 
-To use the template, import it in the IDE of your choice as a Spring Boot application. Where required, this readme assumes the eclipse IDE.
+* [Description of the Project](#description-of-the-project)
+* [Testing coverage](#testing-coverage)
+* [Getting Started](#getting-started)
+* [References](#references)
+* [Contributing](#contributing)
 
-Once the project is set up, you will see 5 packages:
+## Description of the Project
 
-* demo - this package contains the main method which runs the application
+As has already been mentioned, this project revolves around an eCommerce application that provides a REST API. [JWT](https://auth0.com/docs/jwt) authentication is implemented in the form of username and password, and authorization is properly handled. Tests are written to a high code coverage rate. The system is monitored, once the metrics for logging are identified, and the metrics are indexed to [Splunk](https://www.splunk.com/). Finally, the CI/CD pipeline is configured and automated. The work that has been done is best described by explaining its main steps:
 
-* model.persistence - this package contains the data models that Hibernate persists to H2. There are 4 models: Cart, for holding a User's items; Item , for defining new items; User, to hold user account information; and UserOrder, to hold information about submitted orders. Looking back at the application “demo” class, you'll see the `@EntityScan` annotation, telling Spring that this package contains our data models
+* Git is used for repository management.
+* Authentication is applied to users in order to decide whether they can access the application. In addition, JWT headers are used. Furthermore, passwords have length requirements, and there is a confirmation field to make sure passwords do not have typos.
+* A number of tests have been written against an in-memory database, and to a very high code coverage level.
+* The code traces a number of events, such as: create user request successes, create user request failures, exceptions, order requests successes, and order requests failures, amongst others.
+* Logs are indexed to Splunk, in such a way that Splunk monitors them continuously and in real time.
+* In Splunk, search queries can be run, and a dashbord and an alert are set up.
+* Successful Jenkins built and project setup are accomplished.
 
-* model.persistence.repositories - these contain a `JpaRepository` interface for each of our models. This allows Hibernate to connect them with our database so we can access data in the code, as well as define certain convenience methods. Look through them and see the methods that have been declared. Looking at the application “demo” class, you’ll see the `@EnableJpaRepositories` annotation, telling Spring that this package contains our data repositories.
+## Testing coverage
 
-* model.requests - this package contains the request models. The request models will be transformed by Jackson from JSON to these models as requests are made. Note the `Json` annotations, telling Jackson to include and ignore certain fields of the requests. You can also see these annotations on the models themselves.
+In this section, the tests covered are listed:
 
-* controllers - these contain the api endpoints for our app, 1 per model. Note they all have the `@RestController` annotation to allow Spring to understand that they are a part of a REST API
+* SareetaApplicationTests:
+	* contextLoads: tests context loading.
+* UserControllerTest:
+	* create_user_happy_path: tests that a user is successfully created when no exceptions are found.
+	* create_user_password_invalid: tests that a user creation is unsuccessful when the password provided is invalid.
+	* find_user_by_id_happy_path: tests that a user is successfully found by id when no exceptions are found.
+	* find_user_by_username_happy_path: tests that a user is successfully found by username when no exceptions are found.
+* CartControllerTest:
+	* add_to_cart_happy_path: tests that a cart request is successfully added to a cart when no exceptions are found.
+	* add_to_cart_user_not_found: tests that a cart request addition is unsuccessful when the user is not found.
+	* add_to_cart_item_not_found: tests that a cart request addition is unsuccessful when the item is not found.
+	* remove_from_cart_happy_path: tests that a cart request is successfully removed from a cart when no exceptions are found.
+	* remove_from_cart_user_not_found: tests that a cart request removal is unsuccessful when the user is not found.
+	* remove_from_cart_item_not_found: tests that a cart request removal is unsuccessful when the item is not found.
+* OrderControllerTest:
+	* submit_order_username_happy_path: tests that an order is successfully submitted when no exceptions are found.
+	* submit_order_username_not_found: tests that an order submission is unsuccessful when the user is not found.
+	* get_orders_for_user_happy_path: tests that orders are successfully retrieved for a user when no exceptions are found.
+	* get_orders_for_user_username_not_found: tests that the retrieval of orders for a user is unsuccessful when the user is not found.
+* ItemControllerTest:
+	* get_items_happy_path: tests that items are successfully retrieved when no exceptions are found.
+	* get_item_by_id_happy_path: tests that an item is successfully retrieved by id when no exceptions are found.
+	* get_items_by_name_happy_path: tests that items are successfully retrieved by name when no exceptions are found.
+	* get_items_by_name_empty: tests that items retrieval by name is unsuccessful when no items are found.
+* TestSuite: a test suite is defined for the CartControllerTest, ItemControllerTest, OrderControllerTest, and UserControllerTest test classes.
 
-In resources, you'll see the application configuration that sets up our database and Hibernate, It also contains a data.sql file with a couple of items to populate the database with. Spring will run this file every time the application starts
+## Getting Started
 
-In eclipse, you can right click the project and click  “run as” and select Spring Boot application. The application should tell you it’s starting in the console view. Once started, using a REST client, such as Postman, explore the APIs.
+The procedure to obtain a functional a copy of the project on your local machine so that you can further develop and/or test it is explained in this section. These are the steps to be followed:
 
-Some examples are as below:
-To create a new user for example, you would send a POST request to:
-http://localhost:8080/api/user/create with an example body like 
+* Firstly, you have to download/clone the project files from this repository onto your local machine. Then, cd into the root folder where the project files are located.
+* For your information, this is the result of the execution of the packaging step for the *auth-course* application:
+![ecommercepackage](/ScreenShots/ecommercepackage.png)
+* This step creates this *jar* file: *auth-course-0.0.1-SNAPSHOT.jar*.
+* Now, secondly, you can execute the packaged application. Just run the *jar* file on a terminal shell window by typing `java -jar target/auth-course-0.0.1-SNAPSHOT.jar`:
+	* The eCommerce API server is started on port 8080:
+	![jar](/ScreenShots/jar.png)
+* Thirdly, to verify that correct handling of authorization is performed with proper security using JWT, the eCommerce API can be manually tested executing a number of POSTMAN requests:
+	* Using JWT, to create a user, it is not enough providing just the username:
+	![postman1](/ScreenShots/postman1.png)
+	* Password and password confirmation are also required:
+	![postman2](/ScreenShots/postman2.png)
+	* Now it is possible to log in. Note how a JWT token is obtained in the response in the authorization header:
+	![postman3](/ScreenShots/postman3.png)
+	* Once we have logged in successfully, and have been given a JWT token, if we do not provide the token when accessing resources, the access is not granted. Let's see that trying to add to cart:
+	![postman4](/ScreenShots/postman4.png)
+	* If the authorization header is added to the request, adding to cart is allowed by the server, as the user is an authorized one now:
+	![postman5](/ScreenShots/postman5.png)
+	* The same happens if we try to submit an order without and with the token:
+	![postman6](/ScreenShots/postman6.png)
+	![postman7](/ScreenShots/postman7.png)
+	* In addition, it can be seen how the minimum length of the password (7 characters) is checked:
+	![postman8](/ScreenShots/postman8.png)
+* In the fourth place, to verify that proper tests have been written and meet an acceptable code coverage, you can run the supporting tests yourself. All you have to do is	:
+	* Make sure the application is running. If you have followed along, this should be the case now.
+	* Open a new terminal shell window, cd to the root folder of this project, and type, for instance, `mvn test`. Please, note how all tests pass:
+	![tests1](/ScreenShots/tests1.png)
+	![tests2](/ScreenShots/tests2.png)
+* In the fifth place, to verify that the code successfully traces such events as user creation and order requests and exceptions all you have to do is:
+	* Change directory to to the *logs* folder, and type `cat spring-boot-logger-log4j2.log`. This command shows the contents of the *spring-boot-logger-log4j2.log* file, where the code traces events:
+	![logs](/ScreenShots/logs.png)
+* In the sixth place, to verify the usage of Splunk. The logs have been indexed to it:
+	* In the terminal shell window, type `/Applications/Splunk/bin/splunk start`. This command starts the splunk server daemon at port 8000:
+	![splunk1](/ScreenShots/splunk1.png)
+	* Within Splunk itself, queries can be run. For instance, the first one below shows the events the events corresponding to successful user creation, and the second one below shows the events corresponding to unsuccessful user creation:
+	![splunk2](/ScreenShots/splunk2.png)
+	![splunk3](/ScreenShots/splunk3.png)
+	* One alert has been set up named *Unsuccessful user creation threshold exceeded*. This alert is triggered in real time when there are more than five unsuccessful attempts to create a user. Below, its definition can be seen, together with one example where it is triggered after six unsuccessful attempts to create a user with a password shorter than the minimum length allowed:
+	![splunk6](/ScreenShots/splunk6.png)
+	![splunk4](/ScreenShots/splunk4.png)
+	![splunk5](/ScreenShots/splunk5.png)
+	* A dashboard has been created for user creation success rate per minute within one week, and order submission success rate per minute within one day. Below, the resulting dashboard, and the definition of its charts is shown.
+	![splunk7](/ScreenShots/splunk7.png)
+	![splunk8](/ScreenShots/splunk8.png)
+	![splunk9](/ScreenShots/splunk9.png)
+* Finally, let's show successful Jenkins build and project setup. With this aim in view, the entire CI/CD pipeline is created.
+	* Firstly, we log into our AWS account, where we can observe how our already created instance is running. It is noteworthy that this instance includes Docker. In addition, a custom TCP rule for port 8080 has been added in the security group configuration, because Jenkins needs that. A new key pair called *esteve* has also been created, and, as a result, a *esteve.pem* file generated. Permissions are assigned to this file typing `chmod 400 esteve.pem` on the terminal shell window.
+	![cicd1](/ScreenShots/cicd1.png)
+	* Secondly, in order to connect to the instance, we type `ssh -i "esteve.pem" ec2-user@ec2-3-9-139-217.eu-west-2.compute.amazonaws.com`:
+	![cicd2](/ScreenShots/cicd2.png)
+	* Thirdly, assuming Docker has already been installed into the instance by typing `sudo yum install docker`, and a user group added to it by typing `sudo usermod -a -G docker $USER`, we start Docker by typing `sudo service docker start`. After that, we run the Docker image by typing `docker run --rm -u root -d --name jenkins -p 8080:8080 -v jenkins-data:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock -v "$HOME":/home jenkinsci/blueocean` which provides us the container ID for the Docker image, *2ce53aad3eb1ff58d8f8776f206e517feeac473ef4fe228b67a5277aab5db297*:
+	![cicd3](/ScreenShots/cicd3.png)
+	* In the fourth place, a shell can be opened into Jenkins by typing `docker exec -it jenkins bash`, where we assume *maven* has already been installed by typing `apk add maven`. It is also assumed that SSH keys have been generated, entering no passphrase, by typing `ssh-keygen -t rsa`. This would have created the public and private keys in the *.ssh* folder.
+	* In the fifth place, we go to the AWS instance, to 8080 port where we have jenkins running. We assume *jenkins* has already been configured, and global credentials set up (SSH username with private key):
+	![jenkins1](/ScreenShots/jenkins1.png)
+	![jenkins2](/ScreenShots/jenkins2.png)
+	* It the sixth place, it is assumed the public key has been added into the Git repository. The eCommerce application that we have built is the one that we want to deploy to cloud. It can be seen that we have one key successfully deployed. As a result, now the entire pipeline is set up:
+	![git1](/ScreenShots/git1.png)
+	* In the seventh place, the project is configured in Jenkins. A new job is created for Jenkins. We name the freestyle project *ecommerce-application*, and associate the Git repository URL to it, and the credentials. We choose the *master* branch, so that the Jenkins pipeline is set up for this particular branch. Next, the *pom* location is added at the *build* step, and *package* is added as *goal*. Now, we trigger a build, which successfully goes to the entire process of building.
+	![jenkins3](/ScreenShots/jenkins3.png)
+	![jenkins4](/ScreenShots/jenkins4.png)
+	* From now on, every time I make a commit, it will trigger an automatic build that is going to trigger this Jenkins pipeline.
 
-```
-{
-    "username": "test"
-}
-```
+# References
 
+Please, consider these resources for further information:
 
-and this would return
-```
-{
-    "id" 1,
-    "username": "test"
-}
-```
+* [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
+* [Accessing JPA Data with REST](https://spring.io/guides/gs/accessing-data-rest/)
+* [Accessing Data with JPA](https://spring.io/guides/gs/accessing-data-jpa/)
+* [JWT](https://auth0.com/docs/jwt)
+* [Splunk](https://www.splunk.com/)
 
+## Contributing
 
-Exercise:
-Once you've created a user, try  to add items to cart (see the `ModifyCartRequest` class) and submit an order. 
-
-## Adding Authentication and Authorization
-We need to add proper authentication and authorization controls so users can only access their data, and that data can only be accessed in a secure way. We will do this using a combination of usernames and passwords for authentication, as well as JSON Web Tokens (JWT) to handle the authorization.
-
-As stated prior, we will implement a password based authentication scheme. To do this, we need to store the users' passwords in a secure way. This needs to be done with hashing, and it's this hash which should be stored. Additionally when viewing their user information, the user's hash should not be returned to them in the response, You should also add some requirements and validation, as well as a confirm field in the request, to make sure they didn't make a typo. 
-
-1. Add spring security dependencies: 
-   * Spring-boot-starter-security
-1. JWT does not ship as a part of spring security, so you will have to add the 
-   * java-jwt dependency to your project. 
-1. Spring Boot ships with an automatically configured security module that must be disabled, as we will be implementing our own. This must be done in the Application class.
-2. Create password for the user
-3. Once that is disabled, you will need to implement 4 classes (at minimum, you can break it down however you like):
-   * a subclass of `UsernamePasswordAuthenticationFilter` for taking the username and password from a login request and logging in. This, upon successful authentication, should hand back a valid JWT in the `Authorization` header
-   * a subclass of `BasicAuthenticationFilter`. 
-   * an implementation of the `UserDetailsService` interface. This should take a username and return a userdetails User instance with the user's username and hashed password.
-   *  a subclass of `WebSecurityConfigurerAdapter`. This should attach your user details service implementation to Spring's `AuthenticationManager`. It also handles session management and what endpoints are secured. For us, we manage the session so session management should be disabled. Your filters should be added to the authentication chain and every endpoint but 1 should have security required. The one that should not is the one responsible for creating new users.
-
-
-Once all this is setup, you can use Spring's default /login endpoint to login like so
-
-```
-POST /login 
-{
-    "username": "test",
-    "password": "somepassword"
-}
-```
-
-and that should, if those are valid credentials, return a 200 OK with an Authorization header which looks like "Bearer <data>" this "Bearer <data>" is a JWT and must be sent as a Authorization header for all other rqeuests. If it's not present, endpoints should return 401 Unauthorized. If it's present and valid, the endpoints should function as normal.
-
-## Testing
-You must implement unit tests demonstrating at least 80% code coverage.
+This repository contains all the work that makes up the project. Individuals and I myself are encouraged to further improve this project. As a result, I will be more than happy to consider any pull requests.
