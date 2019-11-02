@@ -68,7 +68,7 @@ The procedure to obtain a functional a copy of the project on your local machine
 	![postman1](/ScreenShots/postman1.png)
 	* Password and password confirmation are also required:
 	![postman2](/ScreenShots/postman2.png)
-	* Now it is possible to log in. Note how a JWT token is obtained in the response in the authorization header:
+	* Now it is possible to log in (http://localhost:8080/login). Note how a JWT token is obtained in the response in the authorization header:
 	![postman3](/ScreenShots/postman3.png)
 	* Once we have logged in successfully, and have been given a JWT token, if we do not provide the token when accessing resources, the access is not granted. Let's see that trying to add to cart:
 	![postman4](/ScreenShots/postman4.png)
