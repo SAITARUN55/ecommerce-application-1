@@ -1,0 +1,97 @@
+2019-11-02 04:36:25,400 INFO o.s.b.StartupInfoLogger [main] Starting SareetaApplication v0.0.1-SNAPSHOT on Estebans-MacBook-Pro.local with PID 3550 (/Users/estebanmasobro/Udacity/nanodegrees/Java Developer/Core Curriculum/5. Security & DevOps/project/JDND/projects/P04-eCommerce Application/starter_code/target/auth-course-0.0.1-SNAPSHOT.jar started by estebanmasobro in /Users/estebanmasobro/Udacity/nanodegrees/Java Developer/Core Curriculum/5. Security & DevOps/project/JDND/projects/P04-eCommerce Application/starter_code)
+2019-11-02 04:36:25,409 INFO o.s.b.SpringApplication [main] No active profile set, falling back to default profiles: default
+2019-11-02 04:36:25,912 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-11-02 04:36:25,990 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 68ms. Found 4 repository interfaces.
+2019-11-02 04:36:26,515 INFO o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [main] Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$b334c632] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-11-02 04:36:26,886 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port(s): 8080 (http)
+2019-11-02 04:36:26,904 INFO o.a.j.l.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2019-11-02 04:36:26,917 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
+2019-11-02 04:36:26,918 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.19]
+2019-11-02 04:36:27,010 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2019-11-02 04:36:27,011 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1550 ms
+2019-11-02 04:36:27,213 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2019-11-02 04:36:27,420 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2019-11-02 04:36:27,490 INFO o.h.j.i.u.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-11-02 04:36:27,574 INFO o.h.Version [main] HHH000412: Hibernate Core {5.3.10.Final}
+2019-11-02 04:36:27,577 INFO o.h.c.Environment [main] HHH000206: hibernate.properties not found
+2019-11-02 04:36:27,762 INFO o.h.a.c.r.j.JavaReflectionManager [main] HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-11-02 04:36:28,022 INFO o.h.d.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2019-11-02 04:36:28,829 INFO o.s.o.j.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-11-02 04:36:29,749 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-11-02 04:36:29,856 INFO o.s.s.w.DefaultSecurityFilterChain [main] Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@cd1d761, org.springframework.security.web.context.SecurityContextPersistenceFilter@2a448449, org.springframework.security.web.header.HeaderWriterFilter@4612b856, org.springframework.web.filter.CorsFilter@68be8808, org.springframework.security.web.authentication.logout.LogoutFilter@517566b, com.example.demo.security.JWTAuthenticationFilter@32193bea, com.example.demo.security.JWTAuthenticationVerificationFilter@6b8d96d9, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@43f82e78, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2dc995f4, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@69653e16, org.springframework.security.web.session.SessionManagementFilter@5674e1f2, org.springframework.security.web.access.ExceptionTranslationFilter@22bac7bc, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@7d64e326]
+2019-11-02 04:36:29,999 INFO o.s.s.c.ExecutorConfigurationSupport [main] Initializing ExecutorService 'applicationTaskExecutor'
+2019-11-02 04:36:30,174 INFO o.a.j.l.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2019-11-02 04:36:30,209 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port(s): 8080 (http) with context path ''
+2019-11-02 04:36:30,213 INFO o.s.b.StartupInfoLogger [main] Started SareetaApplication in 30.242 seconds (JVM running for 36.035)
+2019-11-02 04:40:27,258 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-11-02 04:40:27,259 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2019-11-02 04:40:27,269 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Completed initialization in 10 ms
+2019-11-02 04:40:27,457 INFO c.e.d.c.UserController [http-nio-8080-exec-1] Creating user with user name Sareeta
+2019-11-02 04:40:27,630 INFO c.e.d.c.UserController [http-nio-8080-exec-1] CreateUser request success. User created with user name Sareeta
+2019-11-02 04:56:10,611 INFO c.e.d.c.UserController [http-nio-8080-exec-5] Creating user with user name Luke
+2019-11-02 04:56:10,613 ERROR c.e.d.c.UserController [http-nio-8080-exec-5] CreateUser request failure. Error with user password. Cannot create user with user name Luke
+2019-11-02 04:56:11,253 INFO c.e.d.c.UserController [http-nio-8080-exec-7] Creating user with user name Luke
+2019-11-02 04:56:11,255 ERROR c.e.d.c.UserController [http-nio-8080-exec-7] CreateUser request failure. Error with user password. Cannot create user with user name Luke
+2019-11-02 04:56:11,904 INFO c.e.d.c.UserController [http-nio-8080-exec-9] Creating user with user name Luke
+2019-11-02 04:56:11,906 ERROR c.e.d.c.UserController [http-nio-8080-exec-9] CreateUser request failure. Error with user password. Cannot create user with user name Luke
+2019-11-02 04:56:12,533 INFO c.e.d.c.UserController [http-nio-8080-exec-2] Creating user with user name Luke
+2019-11-02 04:56:12,535 ERROR c.e.d.c.UserController [http-nio-8080-exec-2] CreateUser request failure. Error with user password. Cannot create user with user name Luke
+2019-11-02 04:56:13,161 INFO c.e.d.c.UserController [http-nio-8080-exec-3] Creating user with user name Luke
+2019-11-02 04:56:13,164 ERROR c.e.d.c.UserController [http-nio-8080-exec-3] CreateUser request failure. Error with user password. Cannot create user with user name Luke
+2019-11-02 04:56:13,776 INFO c.e.d.c.UserController [http-nio-8080-exec-5] Creating user with user name Luke
+2019-11-02 04:56:13,778 ERROR c.e.d.c.UserController [http-nio-8080-exec-5] CreateUser request failure. Error with user password. Cannot create user with user name Luke
+2019-11-02 05:08:39,513 INFO c.e.d.c.CartController [http-nio-8080-exec-7] Adding to Cart with user name Esteban, and item id 1
+2019-11-02 05:08:39,541 INFO o.h.h.i.QueryTranslatorFactoryInitiator [http-nio-8080-exec-7] HHH000397: Using ASTQueryTranslatorFactory
+2019-11-02 05:08:39,671 ERROR c.e.d.c.CartController [http-nio-8080-exec-7] addToCart request failure. Error with user existence. Cannot add to cart with user name Esteban, and item id 1
+2019-11-02 05:08:52,858 INFO c.e.d.c.CartController [http-nio-8080-exec-8] Adding to Cart with user name Luke, and item id 1
+2019-11-02 05:08:52,861 ERROR c.e.d.c.CartController [http-nio-8080-exec-8] addToCart request failure. Error with user existence. Cannot add to cart with user name Luke, and item id 1
+2019-11-02 05:09:23,197 INFO c.e.d.c.UserController [http-nio-8080-exec-9] Creating user with user name Luke
+2019-11-02 05:09:23,296 INFO c.e.d.c.UserController [http-nio-8080-exec-9] CreateUser request success. User created with user name Luke
+2019-11-02 05:09:43,041 INFO c.e.d.c.CartController [http-nio-8080-exec-10] Adding to Cart with user name Luke, and item id 1
+2019-11-02 05:09:43,092 INFO c.e.d.c.CartController [http-nio-8080-exec-10] addToCart request success. Addition to Cart done with user name Luke, and item id 1
+2019-11-02 05:10:15,431 INFO c.e.d.c.CartController [http-nio-8080-exec-2] Adding to Cart with user name Luke, and item id 1
+2019-11-02 05:10:15,439 INFO c.e.d.c.CartController [http-nio-8080-exec-2] addToCart request success. Addition to Cart done with user name Luke, and item id 1
+2019-11-02 05:10:16,474 INFO c.e.d.c.CartController [http-nio-8080-exec-1] Adding to Cart with user name Luke, and item id 1
+2019-11-02 05:10:16,484 INFO c.e.d.c.CartController [http-nio-8080-exec-1] addToCart request success. Addition to Cart done with user name Luke, and item id 1
+2019-11-02 05:10:17,267 INFO c.e.d.c.CartController [http-nio-8080-exec-3] Adding to Cart with user name Luke, and item id 1
+2019-11-02 05:10:17,277 INFO c.e.d.c.CartController [http-nio-8080-exec-3] addToCart request success. Addition to Cart done with user name Luke, and item id 1
+2019-11-02 05:10:22,100 INFO c.e.d.c.CartController [http-nio-8080-exec-4] Adding to Cart with user name Luke, and item id 5
+2019-11-02 05:10:22,104 ERROR c.e.d.c.CartController [http-nio-8080-exec-4] addToCart request failure. Error with item existence. Cannot add to cart with user name Luke, and item id 5
+2019-11-02 05:13:12,515 INFO c.e.d.c.OrderController [http-nio-8080-exec-7] Submitting order with user name Luke
+2019-11-02 05:13:12,527 INFO c.e.d.c.OrderController [http-nio-8080-exec-7] SubmitOrder request success. Order submitted with user name Luke
+2019-11-02 05:13:13,350 INFO c.e.d.c.OrderController [http-nio-8080-exec-8] Submitting order with user name Luke
+2019-11-02 05:13:13,363 INFO c.e.d.c.OrderController [http-nio-8080-exec-8] SubmitOrder request success. Order submitted with user name Luke
+2019-11-02 05:13:14,242 INFO c.e.d.c.OrderController [http-nio-8080-exec-9] Submitting order with user name Luke
+2019-11-02 05:13:14,248 INFO c.e.d.c.OrderController [http-nio-8080-exec-9] SubmitOrder request success. Order submitted with user name Luke
+2019-11-02 05:13:15,794 INFO c.e.d.c.OrderController [http-nio-8080-exec-10] Submitting order with user name Luke
+2019-11-02 05:13:15,801 INFO c.e.d.c.OrderController [http-nio-8080-exec-10] SubmitOrder request success. Order submitted with user name Luke
+2019-11-02 05:13:17,081 INFO c.e.d.c.OrderController [http-nio-8080-exec-2] Submitting order with user name Luke
+2019-11-02 05:13:17,090 INFO c.e.d.c.OrderController [http-nio-8080-exec-2] SubmitOrder request success. Order submitted with user name Luke
+2019-11-02 05:13:22,629 INFO c.e.d.c.OrderController [http-nio-8080-exec-1] Submitting order with user name Esteban
+2019-11-02 05:13:22,630 ERROR c.e.d.c.OrderController [http-nio-8080-exec-1] SubmitOrder request failure. Error with user existence. Cannot submit order with user name Esteban
+2019-11-02 05:14:19,060 INFO c.e.d.c.OrderController [http-nio-8080-exec-3] Submitting order with user name Esteban
+2019-11-02 05:14:19,062 ERROR c.e.d.c.OrderController [http-nio-8080-exec-3] SubmitOrder request failure. Error with user existence. Cannot submit order with user name Esteban
+2019-11-02 05:14:19,806 INFO c.e.d.c.OrderController [http-nio-8080-exec-4] Submitting order with user name Esteban
+2019-11-02 05:14:19,807 ERROR c.e.d.c.OrderController [http-nio-8080-exec-4] SubmitOrder request failure. Error with user existence. Cannot submit order with user name Esteban
+2019-11-02 05:14:20,429 INFO c.e.d.c.OrderController [http-nio-8080-exec-5] Submitting order with user name Esteban
+2019-11-02 05:14:20,430 ERROR c.e.d.c.OrderController [http-nio-8080-exec-5] SubmitOrder request failure. Error with user existence. Cannot submit order with user name Esteban
+2019-11-02 05:14:21,067 INFO c.e.d.c.OrderController [http-nio-8080-exec-6] Submitting order with user name Esteban
+2019-11-02 05:14:21,069 ERROR c.e.d.c.OrderController [http-nio-8080-exec-6] SubmitOrder request failure. Error with user existence. Cannot submit order with user name Esteban
+2019-11-02 05:14:26,795 INFO c.e.d.c.OrderController [http-nio-8080-exec-7] Submitting order with user name Luke
+2019-11-02 05:14:26,803 INFO c.e.d.c.OrderController [http-nio-8080-exec-7] SubmitOrder request success. Order submitted with user name Luke
+2019-11-02 05:15:07,780 INFO c.e.d.c.OrderController [http-nio-8080-exec-8] Submitting order with user name Luke
+2019-11-02 05:15:07,786 INFO c.e.d.c.OrderController [http-nio-8080-exec-8] SubmitOrder request success. Order submitted with user name Luke
+2019-11-02 05:15:08,402 INFO c.e.d.c.OrderController [http-nio-8080-exec-9] Submitting order with user name Luke
+2019-11-02 05:15:08,412 INFO c.e.d.c.OrderController [http-nio-8080-exec-9] SubmitOrder request success. Order submitted with user name Luke
+2019-11-02 05:15:09,039 INFO c.e.d.c.OrderController [http-nio-8080-exec-10] Submitting order with user name Luke
+2019-11-02 05:15:09,046 INFO c.e.d.c.OrderController [http-nio-8080-exec-10] SubmitOrder request success. Order submitted with user name Luke
+2019-11-02 05:15:09,629 INFO c.e.d.c.OrderController [http-nio-8080-exec-2] Submitting order with user name Luke
+2019-11-02 05:15:09,636 INFO c.e.d.c.OrderController [http-nio-8080-exec-2] SubmitOrder request success. Order submitted with user name Luke
+2019-11-02 05:15:10,252 INFO c.e.d.c.OrderController [http-nio-8080-exec-1] Submitting order with user name Luke
+2019-11-02 05:15:10,258 INFO c.e.d.c.OrderController [http-nio-8080-exec-1] SubmitOrder request success. Order submitted with user name Luke
+2019-11-02 06:39:07,286 INFO o.s.s.c.ExecutorConfigurationSupport [Thread-4] Shutting down ExecutorService 'applicationTaskExecutor'
+2019-11-02 06:39:07,288 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-4] Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-11-02 06:39:07,291 INFO c.z.h.HikariDataSource [Thread-4] HikariPool-1 - Shutdown initiated...
+2019-11-02 06:39:07,295 INFO c.z.h.HikariDataSource [Thread-4] HikariPool-1 - Shutdown completed.
